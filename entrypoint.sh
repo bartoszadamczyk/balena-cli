@@ -14,4 +14,4 @@ fi
 
 balena login --token "${BALENA_API_TOKEN}" > /dev/null
 
-balena $*
+balena "$*"

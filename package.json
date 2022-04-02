@@ -2,7 +2,7 @@
   "name": "balena-cli",
   "private": true,
   "scripts": {
-    "build": "docker build -t bartoszadamczyk/balena-cli .",
+    "build": "docker pull debian:stable-slim && docker build -t bartoszadamczyk/balena-cli .",
     "push": "docker push bartoszadamczyk/balena-cli",
     "deploy": "npm run build && npm run push"
   }

@@ -1,9 +1,12 @@
 FROM debian:stable-slim AS builder
 
-RUN apt update && apt upgrade -y && apt install -y curl unzip
+RUN apt update && apt upgrade -y && apt install -y curl jq unzip
 
 WORKDIR /opt
-RUN curl -O -sSL https://github.com/balena-io/balena-cli/releases/download/v13.3.1/balena-cli-v13.3.1-linux-x64-standalone.zip
+
+RUN curl -sOL $(curl -s https://api.github.com/repos/balena-io/balena-cli/releases/latest | \
+    jq -r -c '.assets | .[] | select(.browser_download_url | contains("linux")) | .browser_download_url') \
+
 RUN unzip balena-cli-*-linux-x64-standalone.zip
 RUN rm -rf balena-cli-*-linux-x64-standalone.zip
 
