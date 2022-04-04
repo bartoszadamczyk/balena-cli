@@ -5,7 +5,7 @@ RUN apt update && apt upgrade -y && apt install -y curl jq unzip
 WORKDIR /opt
 
 RUN curl -sOL $(curl -s https://api.github.com/repos/balena-io/balena-cli/releases/latest | \
-    jq -r -c '.assets | .[] | select(.browser_download_url | contains("linux")) | .browser_download_url') \
+    jq -r -c '.assets | .[] | select(.browser_download_url | contains("linux")) | .browser_download_url')
 
 RUN unzip balena-cli-*-linux-x64-standalone.zip
 RUN rm -rf balena-cli-*-linux-x64-standalone.zip
