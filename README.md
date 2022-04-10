@@ -1,10 +1,6 @@
 # Balena CLI
 
-## How to deploy?
-
-```shell
-npm run deploy
-```
+Docker image with [balena-cli](https://github.com/balena-io/balena-cli).
 
 ## How to use?
 
